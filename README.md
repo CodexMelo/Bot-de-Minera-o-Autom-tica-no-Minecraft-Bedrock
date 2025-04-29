@@ -1,9 +1,3 @@
-Claro! Vou **melhorar** seu `README.md` para deixá-lo **mais profissional**, **corrigido** e **mais atrativo** para o GitHub, mantendo tudo que você pediu.
-
-Aqui está a versão **melhorada e corrigida**:
-
----
-
 # 🚀 Minerador Automático de Minecraft 🤖⛏️
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
