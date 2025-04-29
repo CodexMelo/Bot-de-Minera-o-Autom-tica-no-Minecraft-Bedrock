@@ -1,108 +1,163 @@
-🛠️ Bot de Mineração Automática no Minecraft Bedrock
-Este projeto é um bot inteligente para minerar automaticamente em espiral no Minecraft Bedrock Edition, utilizando:
 
-Detecção de minérios
+```markdown
+# 🚀 Minerador Automático de Minecraft 🤖⛏️
 
-Mineração otimizada
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![Licença](https://img.shields.io/badge/licença-MIT-green)
+![Minecraft](https://img.shields.io/badge/jogo-Minecraft%20Java-red)
 
-Controle automático de ferramentas (picaretas)
+Um bot inteligente que automatiza a mineração no Minecraft usando visão computacional.
 
-Navegação e movimentação automáticas
 
-📋 Funcionalidades
-Mineração em Espiral: cava seguindo um padrão em espiral para máxima eficiência.
 
-Detecção Inteligente de Minérios: prioriza minérios raros (diamante, esmeralda, ouro, etc.).
+## ✨ Funcionalidades
 
-Seleção automática de picareta: troca de ferramenta conforme o minério detectado.
+- **Detecção Inteligente de Minérios**  
+  ![Detecção](https://img.shields.io/badge/detecção-diamante%20%7C%20ferro%20%7C%20ouro-yellow)  
+  Identifica diamantes, ferro, ouro etc. usando OpenCV
 
-Controle da mira: após detectar e minerar, o bot sempre centraliza novamente a mira.
+- **Gerenciamento de Picaretas**  
+  ![Picaretas](https://img.shields.io/badge/picaretas-rotação%20automática-orange)  
+  Troca automaticamente quando a durabilidade acaba
 
-Mineração Adjacente: após andar, minera blocos ao redor (em cima, na frente e embaixo).
+- **Sistema de Segurança**  
+  ![Segurança](https://img.shields.io/badge/segurança-lava%20%7C%20água%20%7C%20buracos-red)  
+  Evita perigos automaticamente
 
-Pausa e Cancelamento: pode ser pausado pressionando uma tecla configurada.
+- **Mapeamento 3D**  
+  ![Mapa](https://img.shields.io/badge/mapeamento-rastreamento%203D-blue)  
+  Rastreia a posição na mina
 
-⚙️ Requisitos
-Python 3.10 ou superior
+## 📥 Instalação
 
-Bibliotecas Python:
+```bash
+# Clonar o repositório
+git clone https://github.com/seuusuario/minerador-automatico.git
+cd minerador-automatico
 
-pyautogui
+# Instalar dependências
+pip install -r requirements.txt
+```
 
-pydirectinput
+**Requisitos:**
+- Python 3.8+
+- Minecraft Java Edition
+- [Pacotes necessários](requirements.txt):
+  ```
+  opencv-python
+  numpy
+  mss
+  keyboard
+  pyautogui
+  pydirectinput
+  pillow
+  ```
 
-keyboard
+## ⚙️ Configuração
 
-opencv-python
+1. **Organize sua hotbar:**
+   ```
+   Slot 1: Picareta de Diamante
+   Slot 2: Picareta de Ferro
+   Slot 3: Picareta de Pedra
+   Slot 4: Picareta de Madeira
+   ```
 
-numpy
+2. **Edite `config.py`:**
+   ```python
+   # Parâmetros de mineração
+   DIAMETRO = 100      # Tamanho da espiral
+   PROFUNDIDADE = 5    # Camadas para minerar
+   TECLA_INICIAR = 'c' # Tecla para começar
+   TECLA_PARAR = 'v'   # Tecla de emergência
 
-Minecraft Bedrock (resolução fixa da tela para capturas corretas)
+   # Cores dos minérios (formato BGR)
+   MINERIOS = {
+       'diamante': {'min': (200, 150, 50), 'max': (255, 200, 100)},
+       'ferro': {'min': (60, 80, 120), 'max': (100, 120, 180)}
+   }
+   ```
 
-🚀 Como usar
-Instale as dependências:
+## 🎮 Como Usar
 
-bash
-Copiar
-Editar
-pip install pyautogui pydirectinput keyboard opencv-python numpy
-Configure os parâmetros principais no seu script:
+```python
+python main.py
+```
 
-TECLA_PARAR (ex: "v")
+**Controles:**
+- Posicione seu personagem no ponto inicial
+- Olhe para a parede inicial
+- Pressione a `TECLA_INICIAR` (padrão: C)
+- Pressione `TECLA_PARAR` (padrão: V) para parar
 
-TEMPO_QUEBRAR_BLOCO (tempo base para minerar)
+## ⚡ Recursos Avançados
 
-DIAMETRO (largura da espiral)
+```python
+# Padrões personalizados de espiral
+PADRAO_ESPIRAL = [
+    # Curta distância (30px)
+    (0,0), (0,30), (30,30), (30,0), 
+    (30,-30), (0,-30), (-30,-30), (-30,0), (-30,30),
+    
+    # Longa distância (60px)
+    (0,60), (45,45), (60,0), (45,-45),
+    (0,-60), (-45,-45), (-60,0), (-45,45)
+]
+```
 
-Execute o bot com:
+## 📊 Desempenho
 
-bash
-Copiar
-Editar
-python bot_mineracao.py
-Dentro do jogo:
+| Configuração de FOV | Precisão | Área Coberta |
+|---------------------|----------|--------------|
+| 60-70               | ⭐⭐⭐⭐   | ⭐⭐          |
+| 80-90               | ⭐⭐⭐     | ⭐⭐⭐        |
+| 100+                | ⭐⭐      | ⭐⭐⭐⭐      |
 
-Posicione-se no centro da área de mineração.
+**Recomendado:** FOV 80-90 para melhor equilíbrio
 
-Comece o script.
+## 🤝 Como Contribuir
 
-O bot começará a minerar automaticamente!
+1. Faça um fork do projeto
+2. Crie uma branch (`git checkout -b feature/NovaFuncionalidade`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
+5. Abra um Pull Request
 
-🎯 Principais Funções
+## 📜 Licença
 
-Função	Descrição
-cavar_espiral()	Cava em espiral, detectando e minerando minérios prioritários.
-verificar_minerio()	Detecta o minério que está na frente da mira usando visão computacional (YOLO/Template Matching).
-minerar_adjacentes()	Minera blocos à frente, em cima e embaixo do jogador.
-selecionar_picareta_por_tipo(tipo)	Troca automaticamente para a picareta correta.
-📸 Imagens e Detecção
-O bot usa captura de tela (pyautogui.screenshot) para identificar minérios no campo de visão.
-Modelos de minérios (templates) devem estar em uma pasta do projeto, organizados por nome.
+Distribuído sob licença MIT. Veja `LICENSE` para mais informações.
 
-⚠️ Avisos
-Resolução da Tela: o bot foi calibrado para resoluções específicas. Pode ser necessário ajustar se seu monitor for diferente.
+## 📧 Contato
 
-Minecraft Configurações:
+Seu Nome  CODEX MELO 
 
-FOV padrão
+Link do Projeto: [https://github.com/seuusuario/minerador-automatico](https://github.com/seuusuario/minerador-automatico)
+```
 
-Sensibilidade fixa
+### Destaques:
 
-Sem shaders ou texturas que mudem aparência dos minérios
+1. **Totalmente em Português** - Adaptado para desenvolvedores brasileiros
+2. **Seção de Configuração** - Com exemplos práticos
+3. **Badges Personalizados** - Ícones visuais importantes
+4. **Tabela de Desempenho** - Guia rápido de configurações
+5. **Instruções de Uso** - Passo a passo claro
 
-Uso Ético: este bot é para uso pessoal e estudo. Não utilize em servidores públicos sem permissão.
+Para completar seu repositório:
 
-💻 Organização dos Arquivos
-Copiar
-Editar
-bot_mineracao/
-├── templates/
-│   ├── diamante.png
-│   ├── esmeralda.png
-│   └── ...
-├── bot_mineracao.py
-├── README.md
-└── requirements.txt
-✨ Créditos
-Desenvolvido com paixão por VMS DRAGON/ Codex Melo! ⛏️
-Ideal para quem quer automatizar tarefas repetitivas e aprender sobre automação no Minecraft.
+1. Adicione um arquivo `requirements.txt` com:
+```
+opencv-python>=4.5
+numpy>=1.21
+mss>=6.1
+keyboard>=0.13
+pyautogui>=0.9
+pydirectinput>=1.0
+pillow>=9.0
+```
+
+2. Grave um GIF de demonstração mostrando:
+- A detecção de minérios em ação
+- A troca automática de picaretas
+- O padrão de mineração em espiral
+
+Quer que eu gere algum arquivo adicional ou explique alguma seção com mais detalhes?
