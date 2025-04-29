@@ -1,48 +1,59 @@
+Claro! Vou **melhorar** seu `README.md` para deixá-lo **mais profissional**, **corrigido** e **mais atrativo** para o GitHub, mantendo tudo que você pediu.
 
-```markdown
+Aqui está a versão **melhorada e corrigida**:
+
+---
+
 # 🚀 Minerador Automático de Minecraft 🤖⛏️
 
-![Python](https://img.shields.io/badge/python-3.8%2B-blue)
-![Licença](https://img.shields.io/badge/licença-MIT-green)
-![Minecraft](https://img.shields.io/badge/jogo-Minecraft%20Java-red)
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
+![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-green.svg)
+![Minecraft](https://img.shields.io/badge/Minecraft-Bedrock%20Edition-red)
 
-Um bot inteligente que automatiza a mineração no Minecraft usando visão computacional.
+Um bot inteligente que automatiza a mineração no Minecraft Bedrock Edition utilizando visão computacional e movimentação otimizada em espiral.
 
-
+---
 
 ## ✨ Funcionalidades
 
 - **Detecção Inteligente de Minérios**  
-  ![Detecção](https://img.shields.io/badge/detecção-diamante%20%7C%20ferro%20%7C%20ouro-yellow)  
-  Identifica diamantes, ferro, ouro etc. usando OpenCV
+  ![Detecção](https://img.shields.io/badge/Detecção-Diamante%20|%20Ferro%20|%20Ouro-yellow.svg)  
+  Identifica automaticamente diamante, ferro, ouro e outros minérios usando OpenCV.
 
 - **Gerenciamento de Picaretas**  
-  ![Picaretas](https://img.shields.io/badge/picaretas-rotação%20automática-orange)  
-  Troca automaticamente quando a durabilidade acaba
+  ![Picaretas](https://img.shields.io/badge/Gerenciamento-Troca%20Automática%20de%20Picaretas-orange.svg)  
+  Troca para outra picareta quando a atual está prestes a quebrar.
 
-- **Sistema de Segurança**  
-  ![Segurança](https://img.shields.io/badge/segurança-lava%20%7C%20água%20%7C%20buracos-red)  
-  Evita perigos automaticamente
+- **Sistema de Segurança** *(opcional)*  
+  ![Segurança](https://img.shields.io/badge/Segurança-Detecção%20de%20Perigos-red.svg)  
+  Evita lava, buracos e outros perigos no ambiente (pode ser desativado).
 
-- **Mapeamento 3D**  
-  ![Mapa](https://img.shields.io/badge/mapeamento-rastreamento%203D-blue)  
-  Rastreia a posição na mina
+- **Mapeamento 3D e Navegação**  
+  ![Mapeamento](https://img.shields.io/badge/Navegação-Padrão%20Espiral-blue.svg)  
+  Cobre grandes áreas com eficiência em movimento espiral descendente.
+
+---
 
 ## 📥 Instalação
 
-```bash
-# Clonar o repositório
-git clone https://github.com/seuusuario/minerador-automatico.git
-cd minerador-automatico
+Clone o repositório:
 
-# Instalar dependências
+```bash
+git git@github.com:CodexMelo/Bot-de-Minera-o-Autom-tica-no-Minecraft-Bedrock.git
+cd Bot-de-Minera-o-Autom-tica-no-Minecraft-Bedrock
+```
+
+Instale as dependências:
+
+```bash
 pip install -r requirements.txt
 ```
 
-**Requisitos:**
+### Requisitos:
+
 - Python 3.8+
-- Minecraft Java Edition
-- [Pacotes necessários](requirements.txt):
+- Minecraft Bedrock Edition
+- Bibliotecas Python:
   ```
   opencv-python
   numpy
@@ -53,9 +64,11 @@ pip install -r requirements.txt
   pillow
   ```
 
+---
+
 ## ⚙️ Configuração
 
-1. **Organize sua hotbar:**
+1. **Organização da Hotbar:**
    ```
    Slot 1: Picareta de Diamante
    Slot 2: Picareta de Ferro
@@ -63,101 +76,86 @@ pip install -r requirements.txt
    Slot 4: Picareta de Madeira
    ```
 
-2. **Edite `config.py`:**
-   ```python
-   # Parâmetros de mineração
-   DIAMETRO = 100      # Tamanho da espiral
-   PROFUNDIDADE = 5    # Camadas para minerar
-   TECLA_INICIAR = 'c' # Tecla para começar
-   TECLA_PARAR = 'v'   # Tecla de emergência
+2. **Configurações no `config.py`:**
 
-   # Cores dos minérios (formato BGR)
-   MINERIOS = {
-       'diamante': {'min': (200, 150, 50), 'max': (255, 200, 100)},
-       'ferro': {'min': (60, 80, 120), 'max': (100, 120, 180)}
-   }
-   ```
+```python
+# Parâmetros de mineração
+DIAMETRO = 100      # Diâmetro da espiral
+PROFUNDIDADE = 5    # Quantidade de camadas
+TECLA_INICIAR = 'c' # Tecla para começar
+TECLA_PARAR = 'v'   # Tecla de emergência
+
+# Cores dos minérios (BGR)
+MINERIOS = {
+    'diamante': {'min': (200, 150, 50), 'max': (255, 200, 100)},
+    'ferro': {'min': (60, 80, 120), 'max': (100, 120, 180)},
+}
+```
+
+---
 
 ## 🎮 Como Usar
 
-```python
+Execute:
+
+```bash
 python main.py
 ```
 
-**Controles:**
-- Posicione seu personagem no ponto inicial
-- Olhe para a parede inicial
-- Pressione a `TECLA_INICIAR` (padrão: C)
-- Pressione `TECLA_PARAR` (padrão: V) para parar
+Controles:
+
+- Posicione o personagem na parede inicial.
+- Pressione `TECLA_INICIAR` (`c` por padrão) para começar.
+- Pressione `TECLA_PARAR` (`v` por padrão) para interromper.
+
+---
 
 ## ⚡ Recursos Avançados
 
+Exemplo de padrão de varredura em espiral:
+
 ```python
-# Padrões personalizados de espiral
 PADRAO_ESPIRAL = [
-    # Curta distância (30px)
-    (0,0), (0,30), (30,30), (30,0), 
-    (30,-30), (0,-30), (-30,-30), (-30,0), (-30,30),
-    
-    # Longa distância (60px)
-    (0,60), (45,45), (60,0), (45,-45),
-    (0,-60), (-45,-45), (-60,0), (-45,45)
+    (0, 0), (0, 30), (30, 30), (30, 0),
+    (30, -30), (0, -30), (-30, -30), (-30, 0), (-30, 30),
+    (0, 60), (45, 45), (60, 0), (45, -45),
+    (0, -60), (-45, -45), (-60, 0), (-45, 45)
 ]
 ```
+
+---
 
 ## 📊 Desempenho
 
 | Configuração de FOV | Precisão | Área Coberta |
-|---------------------|----------|--------------|
-| 60-70               | ⭐⭐⭐⭐   | ⭐⭐          |
+|:-------------------:|:--------:|:------------:|
+| 60-70               | ⭐⭐⭐⭐    | ⭐⭐          |
 | 80-90               | ⭐⭐⭐     | ⭐⭐⭐        |
 | 100+                | ⭐⭐      | ⭐⭐⭐⭐      |
 
-**Recomendado:** FOV 80-90 para melhor equilíbrio
+**Recomendação:**  
+Utilizar FOV entre **80 e 90** para melhor equilíbrio entre precisão e alcance.
+
+---
 
 ## 🤝 Como Contribuir
 
-1. Faça um fork do projeto
-2. Crie uma branch (`git checkout -b feature/NovaFuncionalidade`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
-5. Abra um Pull Request
+1. Faça um fork do projeto.
+2. Crie uma nova branch (`git checkout -b feature/NovaFuncionalidade`).
+3. Commit suas alterações (`git commit -m 'Adiciona nova funcionalidade'`).
+4. Push para sua branch (`git push origin feature/NovaFuncionalidade`).
+5. Abra um Pull Request!
+
+---
 
 ## 📜 Licença
 
-Distribuído sob licença MIT. Veja `LICENSE` para mais informações.
+Distribuído sob a licença **MIT**.  
+Consulte o arquivo `LICENSE` para mais informações.
+
+---
 
 ## 📧 Contato
 
-Seu Nome  CODEX MELO 
-
-Link do Projeto: [https://github.com/seuusuario/minerador-automatico](https://github.com/seuusuario/minerador-automatico)
-```
-
-### Destaques:
-
-1. **Totalmente em Português** - Adaptado para desenvolvedores brasileiros
-2. **Seção de Configuração** - Com exemplos práticos
-3. **Badges Personalizados** - Ícones visuais importantes
-4. **Tabela de Desempenho** - Guia rápido de configurações
-5. **Instruções de Uso** - Passo a passo claro
-
-Para completar seu repositório:
-
-1. Adicione um arquivo `requirements.txt` com:
-```
-opencv-python>=4.5
-numpy>=1.21
-mss>=6.1
-keyboard>=0.13
-pyautogui>=0.9
-pydirectinput>=1.0
-pillow>=9.0
-```
-
-2. Grave um GIF de demonstração mostrando:
-- A detecção de minérios em ação
-- A troca automática de picaretas
-- O padrão de mineração em espiral
-
-Quer que eu gere algum arquivo adicional ou explique alguma seção com mais detalhes?
+Projeto desenvolvido por **CODEX MELO**.  
+GitHub: [https://github.com/CodexMelo/Bot-de-Minera-o-Autom-tica-no-Minecraft-Bedrock#](https://github.com/CodexMelo/Bot-de-Minera-o-Autom-tica-no-Minecraft-Bedrock#)
